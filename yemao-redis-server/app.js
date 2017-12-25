@@ -36,40 +36,40 @@ app.use('/', index);
 app.use('/users', users);
 
 /**接口文件**/
-var interfaces = require('./interfaces')
-/******************app接口*********************/
-app.get('/appApi', function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-
-    var obj = {"code":"200","msg":"请求成功","remark":"appApi get request ！"};
-    console.log("get:");
-
-    //var body = req.body || {};
-    //console.log('body:'+JSON.stringify(body))
-
-    var url_info = require('url').parse(req.url, true);
-    //console.log("url_info:"+JSON.stringify(url_info))
-    interfaces.getData(url_info.query,function (result) {
-        //console.log('result:'+JSON.stringify(result));
-        obj.data = result;
-        res.end(JSON.stringify(obj));
-    });
-});
-
-app.post('/appApi', function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-
-    var obj = {"code":"200","msg":"请求成功","remark":"webApi post request ！"};
-    console.log("post:");
-
-    var body = req.body || {}
-    //console.log('body:'+JSON.stringify(body))
-    interfaces.getData(body.params,function (result) {
-        //console.log('result:'+JSON.stringify(result));
-        obj.data = result;
-        res.end(JSON.stringify(obj));
-    });
-});
+// var interfaces = require('./interfaces')
+// /******************app接口*********************/
+// app.get('/appApi', function(req, res) {
+//     res.writeHead(200, {'Content-Type': 'text/plain'});
+//
+//     var obj = {"code":"200","msg":"请求成功","remark":"appApi get request ！"};
+//     console.log("get:");
+//
+//     //var body = req.body || {};
+//     //console.log('body:'+JSON.stringify(body))
+//
+//     var url_info = require('url').parse(req.url, true);
+//     //console.log("url_info:"+JSON.stringify(url_info))
+//     interfaces.getData(url_info.query,function (result) {
+//         //console.log('result:'+JSON.stringify(result));
+//         obj.data = result;
+//         res.end(JSON.stringify(obj));
+//     });
+// });
+//
+// app.post('/appApi', function(req, res) {
+//     res.writeHead(200, {'Content-Type': 'text/plain'});
+//
+//     var obj = {"code":"200","msg":"请求成功","remark":"webApi post request ！"};
+//     console.log("post:");
+//
+//     var body = req.body || {}
+//     //console.log('body:'+JSON.stringify(body))
+//     interfaces.getData(body.params,function (result) {
+//         //console.log('result:'+JSON.stringify(result));
+//         obj.data = result;
+//         res.end(JSON.stringify(obj));
+//     });
+// });
 
 /******************mongodb*********************/
 // var mongotest = require('./mongotest')
